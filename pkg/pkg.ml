@@ -2,6 +2,7 @@
 #use "topfind"
 #require "topkg"
 #require "cpuid"
+#require "result"
 #require "ocb-stubblr.topkg"
 open Topkg
 open Ocb_stubblr_topkg
