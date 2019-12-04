@@ -17,8 +17,8 @@ let fs   = Conf.(key "freestanding" bool ~absent:false
 let mir  = Conf.(key "mirage" bool ~absent:false
                   ~doc:"Build Mirage support.")
 let accelerate = Conf.(discovered_key "accelerate" bool
-  ~absent:(fun () -> match Cpuid.supports cpuflags with
-                     | Ok r -> Ok r | Error _ -> Ok false)
+  ~absent:(fun () -> Result.( match Cpuid.supports cpuflags with
+                     | Ok r -> Ok r | Error _ -> Ok false))
   ~env:"NOCRYPTO_ACCELERATE"
   ~doc:"Enable the use of extended CPU features (SSE3, AES-NI). \
         If unspecified, matches build machine's capabilities.")
